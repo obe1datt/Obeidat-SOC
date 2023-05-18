@@ -4,7 +4,7 @@ import json
 def search_for_hash(hash):
     print("Hash searching has been started ....\n")
     threat_fox_apikey ={
-     "API-KEY": "62a103d7b76150796e9b6e669acbc04e",
+     "API-KEY": "Enter Api key",
     }
 
     data_to_post ={
