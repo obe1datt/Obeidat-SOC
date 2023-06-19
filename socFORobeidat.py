@@ -193,8 +193,7 @@ def VTF (hash_val):
 
     req = requests.get(url=base_url , headers=VTotal_Key)
     res =  req.json()
-    alldata = res.get('data').get('attributes')
-
+    alldata  = res.get('data').get('attributes')
     for key in alldata:
         if key == 'type_description':
           print('Type of Malware : ' , alldata['type_description'])
