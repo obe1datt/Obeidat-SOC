@@ -16,7 +16,7 @@ def ip_info(ip_add):
 
 def ip_info_token(ip_addr):
         ip = ip_addr
-        token = 'dd14d85d9daeec'
+        token = 'PUT ipinfo token'
         base_url =   f'https://ipinfo.io/{ip}?token={token}'
 
         req = requests.get(base_url)
@@ -30,7 +30,7 @@ def ip_info_token(ip_addr):
 def search_for_ip():
     print("IP searching has been started ....\n")
     threat_fox_apikey ={
-     "API-KEY": "62a103d7b76150796e9b6e669acbc04e",
+     "API-KEY": "Threatfox spi token",
     }
     data_to_post  = { "query": "search_ioc", 
                      "search_term": "139.180.203.104" }
@@ -48,7 +48,7 @@ def search_for_ip():
 
 
 def VT_IP(ip):
-    VTotal_Key = {'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'}
+    VTotal_Key = {'x-apikey':'VirusTotla api key'}
 
     ip = ip
     base_url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
