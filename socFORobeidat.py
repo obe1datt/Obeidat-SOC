@@ -4,7 +4,7 @@ import json
 def search_for_hash(hash):
     print("Hash searching has been started ....\n")
     threat_fox_apikey ={
-     "API-KEY": "62a103d7b76150796e9b6e669acbc04e",
+     "API-KEY": "Put threatfox api key",
     }
 
     data_to_post ={
@@ -41,7 +41,7 @@ def search_for_hash(hash):
 
 def search_for_hash_bz(hash_value):
     print("Hash searching has been started ....\n")
-    headers = {'API-KEY': '8eaf79f47c5790979b9950bed5c7f03b',}
+    headers = {'API-KEY': 'Put Malwarebazar API key',}
 
     data_to_post ={
            "query": "get_info", "hash": hash_value
@@ -75,7 +75,7 @@ def search_for_hash_bz(hash_value):
 def vt_engines(hash_en_value):
     VTotal_Key = {
 
-    'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'
+    'x-apikey':'PUT virustotal API key'
     }
 
     id = hash_en_value
@@ -101,7 +101,7 @@ def vt_engines(hash_en_value):
 ##########################################################################
 
 def VT_IP(ip):
-    VTotal_Key = {'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'}
+    VTotal_Key = {'x-apikey':'VirusTotal API key'}
 
     ip = ip
     base_url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
@@ -147,7 +147,7 @@ def MT(hash_val):
     url = f"https://api.metadefender.com/v4/hash/{hash_val}"
 
     headers = {
-        'apikey': "b4372a2b95e8f0899cf0e3aefb83e9c2"
+        'apikey': "Put meta defnder apikey"
     }
 
     response = requests.request("GET", url, headers=headers)
@@ -185,7 +185,7 @@ import json
 
 def VTF (hash_val):
 
-    VTotal_Key = {'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'}
+    VTotal_Key = {'x-apikey':'Virustotla APi key'}
 
     id = hash_val
     base_url = f"https://www.virustotal.com/api/v3/files/{id}"
