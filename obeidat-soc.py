@@ -6,23 +6,23 @@ from bs4 import BeautifulSoup
 global threat_fox_apikey 
 
 threat_fox_apikey ={
-     "API-KEY": "62a103d7b76150796e9b6e669acbc04e",
+     "API-KEY": "PUT threatFox apikey ",
     }
 
 global malware_bazar_apikey 
 malware_bazar_apikey = {
-    'API-KEY': '8eaf79f47c5790979b9950bed5c7f03b',
+    'API-KEY': 'PUT MalwareBazar APIKEY',
     }
 
 global virus_total_apikey 
 virus_total_apikey = VTotal_Key = {
 
-    'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'
+    'x-apikey':'PUT VIRUSTOTAL APIKEY '
     }
 
 global metadefender_api_key 
 metadefender_api_key = {
-        'apikey': "b4372a2b95e8f0899cf0e3aefb83e9c2"
+        'apikey': "PUT METADEFENDER APIKEY"
     }
 
 
