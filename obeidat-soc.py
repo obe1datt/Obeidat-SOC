@@ -6,30 +6,31 @@ from bs4 import BeautifulSoup
 global threat_fox_apikey 
 
 threat_fox_apikey ={
-     "API-KEY": "PUT threatFox apikey ",
+     "API-KEY": "62a103d7b76150796e9b6e669acbc04e",
     }
 
 global malware_bazar_apikey 
 malware_bazar_apikey = {
-    'API-KEY': 'PUT MalwareBazar APIKEY',
+    'API-KEY': '8eaf79f47c5790979b9950bed5c7f03b',
     }
 
 global virus_total_apikey 
 virus_total_apikey = VTotal_Key = {
 
-    'x-apikey':'PUT VIRUSTOTAL APIKEY '
+    'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'
     }
 
 global metadefender_api_key 
 metadefender_api_key = {
-        'apikey': "PUT METADEFENDER APIKEY"
+        'apikey': "b4372a2b95e8f0899cf0e3aefb83e9c2"
     }
 
-
+global virus_total_apikey_1
+virus_total_apikey_1 = "568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c"
 
 def search_for_hash(hash):
-    print("Hash searching has been started ....\n")
     
+    print("====================== Threat Fox ======================\n")
 
     data_to_post ={
        "query": "search_hash", "hash": hash
@@ -62,7 +63,7 @@ def search_for_hash(hash):
 
 
 def search_for_hash_bz(hash_value):
-    print("Hash searching has been started ....\n")
+    print("====================== Malware Bazar ======================\n")
     headers = malware_bazar_apikey
 
     data_to_post ={
@@ -95,11 +96,11 @@ def search_for_hash_bz(hash_value):
           print("No Result Found ")
 
 def vt_engines(hash_en_value):
-    
+    print("====================== Virus Total ======================\n")
     VTotal_Key = virus_total_apikey
-    id = hash_en_value
+    id = str(hash_en_value).strip()
     base_url = f"https://www.virustotal.com/api/v3/files/{id}"
-    global res
+    
 
     try:
        req = requests.get(url=base_url , headers=VTotal_Key)
@@ -144,12 +145,12 @@ def vt_engines(hash_en_value):
             print('Last Modification Date' , alldata['last_modification_date'])
        alldata  = res.get('data').get('attributes').get("last_analysis_results")
        print("Virus Total Started")
+       print("############################# Engine SCAN  #############################")
        for key in alldata:
-         print("############################# Engine SCAN  #############################")
          if alldata[key].get('category') == 'malicious':
           print("Engine :" , alldata[key].get('engine_name'))
           print('\t',alldata[key].get('category'))
-          print('\t',alldata[key].get('result'))
+          print('Result\t',alldata[key].get('result'))
           print('\t',alldata[key].get('method'))
           print('---------------------------------------------------------------')
          else:
@@ -159,10 +160,8 @@ def vt_engines(hash_en_value):
 
 
 def MT(hash_val):
+    print("====================== Meta Defender ======================\n")
     url = f"https://api.metadefender.com/v4/hash/{hash_val}"
-
-    
-
     response = requests.request("GET", url, headers=metadefender_api_key)
 
     res  = response.json()
@@ -188,8 +187,8 @@ def MT(hash_val):
     print("-"*40) 
 
 def VT_IP(ip):
+    print("====================== Virus Total ======================\n")
     VTotal_Key = virus_total_apikey
-
     ip = ip
     base_url = f"https://www.virustotal.com/api/v3/ip_addresses/{ip}"
 
@@ -214,11 +213,10 @@ def VT_IP(ip):
         if key == 'last_analysis_results':
             print('############################# Engine SCAN  #############################')
             for  k in  alldata['last_analysis_results']:
-                if alldata['last_analysis_results'][k].get('category') == 'malicious' :
-                    print("Engine Name" , alldata['last_analysis_results'][k].get('engine_name'))
-                    print("\tMalware Catagoty" , alldata['last_analysis_results'][k].get('category"'))
-                    print("\tIP Result" , alldata['last_analysis_results'][k].get('result'))
-                    print("\tMethod" , alldata['last_analysis_results'][k].get('method'))
+                    print("Engine Name :" , alldata['last_analysis_results'][k].get('engine_name'))
+                    print("\tMalware Catagoty :" , alldata['last_analysis_results'][k].get('category"'))
+                    print("\tIP Result :" , alldata['last_analysis_results'][k].get('result'))
+                    print("\tMethod :" , alldata['last_analysis_results'][k].get('method'))
                     print('-'*50)
         if key == 'continent':
             print('continent :',alldata['continent'])
@@ -226,8 +224,9 @@ def VT_IP(ip):
             print('IP Reputation :',alldata['reputation'])
 
 def search_for_ip(ip):
+    print("====================== Threat Fox ======================\n")
     try:
-        print("IP searching has been started ....\n")
+        
         data_to_post  = { "query": "search_ioc", 
                         "search_term": ip }
         
@@ -245,6 +244,7 @@ def search_for_ip(ip):
         print("No Result  in ThreatFox ")    
 
 def feodotracker_ip(ip):
+      print("====================== Feodotracker  ======================\n")
       url   = f'https://feodotracker.abuse.ch/browse.php?search={ip}'
 
       result = []
@@ -253,17 +253,14 @@ def feodotracker_ip(ip):
       s  = soup.find("table", class_="table table-sm table-hover table-bordered")
       lines2 = s.find_all('td')
       for l in lines2:
-         result.append(l.text.lstrip())
+         print(l.text.lstrip())
 
-      print("Creation Date :", result[0])
-      print("Malware IP :" , result[1]) 
-      print("Malware Fmaliy :" , result[2])
-      print("Malware Status", result[3])
-      print("ASn :" ,result[4])
-      print("Country :" ,result[5])   
+         
 
 
 def VT_domina(domain):
+    print("====================== Virus Total  ======================\n")
+    domain = str(domain).strip()
     base_url  = f'https://www.virustotal.com/api/v3/domains/{domain}'
      
 
@@ -299,8 +296,9 @@ def VT_domina(domain):
 
 
 def search_for_domain(domain):
+    print("====================== Threat Fox  ======================\n")
     try:
-        print("IP searching has been started ....\n")
+        domain = str(domain).strip()
         data_to_post  = { "query": "search_ioc", 
                         "search_term": domain }
         
@@ -318,13 +316,13 @@ def search_for_domain(domain):
         print("No Result  in ThreatFox ") 
 
 def scan_url(url):
-
+    url  = str(url).strip()
     url = "https://www.virustotal.com/api/v3/urls"
 
     headers = {
         "accept": "application/json",
         "content-type": "application/x-www-form-urlencoded",
-        "x-apikey": virus_total_apikey
+        "x-apikey": virus_total_apikey_1
     }
     
     data_to_post = {
@@ -338,14 +336,15 @@ def scan_url(url):
     
     return str(id)
 
-import requests
+
 
 
 def url_anlysis(url_to_scan):
+        print("====================== Virus Total  ======================\n")
         headers = { "accept": "application/json",
-                    "x-apikey": virus_total_apikey
+                    "x-apikey": virus_total_apikey_1
                         }
-
+        url_to_scan + str(url_to_scan).strip()
         id = scan_url(url_to_scan)
         url = f"https://www.virustotal.com/api/v3/analyses/{id}"
         try:
@@ -368,14 +367,29 @@ def url_anlysis(url_to_scan):
              print("VirusTotal Error ")           
 
 def main():
-    """
-    search_for_hash(sys.argv[1])
-    search_for_hash_bz(sys.argv[1])
-    vt_engines(sys.argv[1])
-    MT(sys.argv[1])
-    """
-    VT_IP('139.180.203.104')
-    search_for_ip('139.180.203.104')
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-H","--hash", help="The hash of the file")
+    parser.add_argument("-I","--ip", help="The ip for scan")
+    parser.add_argument("-D","--domain", help="The Domain for Scan")
+    parser.add_argument("-U","--url", help="The Url for Scan")
+    
+    args = parser.parse_args()
+    if args.hash:
+        search_for_hash_bz(args.hash)
+        MT(args.hash)
+        search_for_hash(args.hash)
+        vt_engines(args.hash)
+    elif args.ip:
+         VT_IP(args.ip)
+         search_for_ip(args.ip)
+         feodotracker_ip(args.ip)
+    elif args.domain:
+         search_for_domain(args.domain)
+         VT_domina(args.domain)     
+    elif args.url:
+         url_anlysis(args.url)  
+    else:
+        parser.print_help() 
 if __name__ == "__main__":
     main()    
 
