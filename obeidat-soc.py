@@ -6,27 +6,27 @@ from bs4 import BeautifulSoup
 global threat_fox_apikey 
 
 threat_fox_apikey ={
-     "API-KEY": "62a103d7b76150796e9b6e669acbc04e",
+     "API-KEY": "",
     }
 
 global malware_bazar_apikey 
 malware_bazar_apikey = {
-    'API-KEY': '8eaf79f47c5790979b9950bed5c7f03b',
+    'API-KEY': '',
     }
 
 global virus_total_apikey 
 virus_total_apikey = VTotal_Key = {
 
-    'x-apikey':'568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c'
+    'x-apikey':''
     }
 
 global metadefender_api_key 
 metadefender_api_key = {
-        'apikey': "b4372a2b95e8f0899cf0e3aefb83e9c2"
+        'apikey': ""
     }
 
 global virus_total_apikey_1
-virus_total_apikey_1 = "568991ceebba95d9b80fa01b234762d9a4965d352b8cb3be795fe9a80cda661c"
+virus_total_apikey_1 = ""
 
 def search_for_hash(hash):
     
